@@ -614,39 +614,46 @@ body {
 
 /* --- FIX JIRA ITEM --- */
 .jira-item {
-  display: flex; 
-  justify-content: space-between; 
-  align-items: flex-start; /* Biar nempel ke atas, gak numpuk */
-  padding: .8rem 0; 
-  border-bottom: 1px solid #f0f3f7; 
-  font-size: .88rem;
-  gap: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* Biar nempel ke atas, gak numpuk */
+    padding: .8rem 0;
+    border-bottom: 1px solid #f0f3f7;
+    font-size: .88rem;
+    gap: 1rem;
 }
-.jira-item:last-child { border-bottom: none; }
+
+.jira-item:last-child {
+    border-bottom: none;
+}
 
 .jira-info {
-  display: flex;
-  flex-direction: column;
-  gap: .2rem;
-  flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    flex: 1;
 }
-.jira-key { 
-  font-weight: 600; 
-  color: var(--corp-accent); 
-  font-family: monospace; 
-  font-size: .8rem;
+
+.jira-key {
+    font-weight: 600;
+    color: var(--corp-accent);
+    font-family: monospace;
+    font-size: .8rem;
 }
+
 .jira-title {
-  color: #2c3e50;
-  font-size: .82rem;
-  line-height: 1.4;
+    color: #2c3e50;
+    font-size: .82rem;
+    line-height: 1.4;
 }
+
 .jira-status {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: .35rem;
-  flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .35rem;
+    flex-shrink: 0;
 }
 
 .meeting-item {
@@ -1496,5 +1503,154 @@ body {
 
     .stat-label {
         font-size: .68rem;
+    }
+}
+
+/* ============================================================
+   16. MEETING CARD (RAPI & PREMIUM)
+   ============================================================ */
+.meeting-card {
+    border: 1px solid #e3e8ef;
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 1rem;
+    transition: box-shadow .2s, border-color .2s, transform .1s;
+    background: #fff;
+}
+
+.meeting-card:hover {
+    box-shadow: 0 4px 16px rgba(26, 79, 139, .08);
+    border-color: #cfdcea;
+}
+
+/* Bagian Atas (Judul & Tombol Aksi) */
+.meeting-card .mc-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.meeting-card .mc-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #2c3e50;
+    margin-bottom: 0;
+}
+
+/* Meta Info (Tanggal, Lokasi, Avatar) */
+.meeting-card .mc-meta {
+    font-size: .8rem;
+    color: var(--corp-gray);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-top: .5rem;
+    margin-bottom: .75rem;
+}
+
+.meeting-card .mc-meta i {
+    margin-right: .25rem;
+    color: #9aa7b5;
+}
+
+/* Teks Excerpt (Cuplikan Catatan) */
+.meeting-card .mc-excerpt {
+    font-size: .88rem;
+    color: #5a6a7a;
+    line-height: 1.6;
+    margin-bottom: .85rem;
+
+    /* Biar maksimal 2 baris aja */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ============================================================
+   17. BADGE TIPE MEETING
+   ============================================================ */
+.type-badge {
+    font-size: .7rem;
+    font-weight: 700;
+    padding: .3em .65em;
+    border-radius: 6px;
+    white-space: nowrap;
+    letter-spacing: .02em;
+}
+
+.type-review {
+    background: #e8f0fa;
+    color: #1a4f8b;
+}
+
+.type-planning {
+    background: #ede7f6;
+    color: #5e35b1;
+}
+
+.type-vendor {
+    background: #fff3e0;
+    color: #c77700;
+}
+
+.type-internal {
+    background: #e6f7ee;
+    color: #1e8e5a;
+}
+
+/* ============================================================
+   18. ACTION PILLS (TOMBOL STATUS TASK)
+   ============================================================ */
+.action-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: .25rem;
+}
+
+.action-pill {
+    font-size: .75rem;
+    padding: .35em .7em;
+    border-radius: 20px;
+    background: #f4f6fa;
+    color: var(--corp-gray);
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    border: 1px solid transparent;
+}
+
+.action-pill.done {
+    background: #e6f7ee;
+    color: #1e8e5a;
+    border-color: #c3e8d3;
+}
+
+.action-pill.pending {
+    background: #fff3e0;
+    color: #c77700;
+    border-color: #fde0b0;
+}
+
+.action-pill.overdue {
+    background: #fdeaea;
+    color: #c0392b;
+    border-color: #f5c6c6;
+}
+
+/* Responsive untuk HP */
+@media (max-width: 767px) {
+    .meeting-card .mc-top {
+        flex-direction: column;
+    }
+
+    .meeting-card .mc-top .action-btns {
+        align-self: flex-end;
+        margin-top: -1.5rem;
+        /* Tarik tombol edit/hapus ke atas kanan */
     }
 }
